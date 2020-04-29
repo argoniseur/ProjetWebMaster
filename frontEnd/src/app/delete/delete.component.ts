@@ -37,7 +37,7 @@ export class DeleteComponent implements OnInit {
     const tmp = this.filmsFound;
     this.filmsFound = [];
     tmp.forEach(f => {if (f !== this.filmToDelete) { this.filmsFound.push(f); }});
-    this.http.get(`${this.backURL + '/deletebyid?id=' + this.filmToDelete.id}`).subscribe(r => console.log(r));
+    this.http.get(`${this.backURL + '/deletebyid?id=' + this.filmToDelete.id}`, {responseType: 'text'}).subscribe(r => console.log(r.toString()));
 
   }
 }

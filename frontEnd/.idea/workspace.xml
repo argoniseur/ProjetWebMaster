@@ -29,6 +29,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1b0kMSpZ3KZP2kpu7DPe7Uy2l4H" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -99,7 +106,8 @@
       <workItem from="1587822313105" duration="1529000" />
       <workItem from="1587864201173" duration="23288000" />
       <workItem from="1588035082827" duration="2586000" />
-      <workItem from="1588123594268" duration="2187000" />
+      <workItem from="1588123594268" duration="2934000" />
+      <workItem from="1588159770594" duration="1229000" />
     </task>
     <servers />
   </component>
