@@ -1,0 +1,52 @@
+<div class="container col-lg-3 align-self-center my-5" *ngIf="isEmpty()">
+  <div class="form-group">
+    <div class="form-inline my-2 my-lg-0">
+      <input #search class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="onClickSearch(search.value)">Search</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isEmpty() && !confirmationDelete">
+  <div class="container my-4 col-lg-9 align-self-center">
+    <div class="row ">
+      <div class="col-sm ">
+        <h4 class="text-center">Titre du film</h4>
+      </div>
+      <div class="col-sm">
+        <h4 class="text-center">Année</h4>
+      </div>
+      <div class="col-sm">
+        <h4 class="text-center">Réalisateur</h4>
+      </div>
+      <div class="col-sm">
+        <h4 class="text-center">Genre</h4>
+      </div>
+      <div class="col-sm">
+        <h4 class="text-center">Emplacement</h4>
+      </div>
+
+    </div>
+  </div>
+  <!--                (click)="onClickDelete(film)"-->
+  <div class="container col-lg-9 align-self-center">
+    <div class="list-group">
+      <app-film *ngFor="let film of filmsFound"
+                [film]="film"
+                (click)="onClickDelete(film)"
+                data-toggle="modal" data-target="#myModal"
+      >
+      </app-film>
+    </div>
+  </div>
+</div>
+
+<div class="container col-lg-3 align-self-center my-5" *ngIf="!isEmpty() && confirmationDelete">
+  <p>Voulez vous vraiment supprimer {{ filmToDelete.name }} ?</p>
+  <div class="form-group">
+    <div class="form-inline ">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="onClickConfirm()">Confirmer</button>
+    </div>
+  </div>
+</div>
+

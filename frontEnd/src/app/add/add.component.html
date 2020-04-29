@@ -1,0 +1,18 @@
+<div class="container col-lg-9 align-self-center">
+  <div class="form-group">
+    <label class="col-form-label" for="titre">Titre</label>
+    <input #titre type="text" class="form-control" placeholder="Titre" id="titre" >
+    <label class="col-form-label" for="annee">Annee</label>
+    <input #annee type="text" class="form-control" placeholder="Annee" id="annee">
+    <label class="col-form-label" for="realisateur">Realisateur</label>
+    <input #realisateur type="text" class="form-control" placeholder="Realisateur" id="realisateur">
+    <label for="genre">Genre</label>
+    <select #genre class="form-control" id="genre">
+      <option *ngFor="let e of enumGenre">{{ e }}</option>
+    </select>
+    <label class="col-form-label" for="emplacement">Emplacement</label>
+    <input #emplacement type="text" class="form-control" placeholder="Emplacement" id="emplacement">
+
+  </div>
+  <button class="btn btn-secondary my-8 my-sm-0" type="submit" (click)="onClick()" routerLink="">Insérer</button>
+</div>
