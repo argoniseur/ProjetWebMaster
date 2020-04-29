@@ -34,7 +34,7 @@ public class RestWebService {
         return filmRepository.findByName(name);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @GetMapping("/approxsearch")
     public List<Film> approxsearch(@RequestParam("name") String name){
         List<Film> ret = new ArrayList<>();
@@ -66,13 +66,13 @@ public class RestWebService {
         return filmRepository.findByEmplacement(emplacement);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @GetMapping("/film")
     public Iterable<Film> getFilms(){
         return filmRepository.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @PostMapping("/film")
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void addFilm(@RequestBody Film film){
@@ -86,7 +86,7 @@ public class RestWebService {
         filmRepository.delete(film);
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @GetMapping("/deletebyid")
     public String deleteFilm(@RequestParam("id") long id){
         Film tmp = filmRepository.findById(id);
@@ -94,7 +94,7 @@ public class RestWebService {
         return "Done";
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @GetMapping("/random")
     public Film randomFilm(){
         List<Film> result = new ArrayList<>();

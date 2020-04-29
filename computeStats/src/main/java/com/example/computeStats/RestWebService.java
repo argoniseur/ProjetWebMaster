@@ -18,7 +18,7 @@ public class RestWebService {
         super();
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "vps352751.ovh.net:4200")
     @GetMapping("/stats")
     public String getStats(){
         RestTemplate restTemplate = new RestTemplate();
