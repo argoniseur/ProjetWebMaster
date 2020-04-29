@@ -5,8 +5,7 @@ import {Film} from '../film/film.model';
 
 
 export class FilmService implements OnInit {
-  backURL = 'http://localhost:8080';
-  nbFilmsURL = 'http://localhost:8081/stats';
+  backURL = 'http://localhost';
   films: Film[];
   nbFilms: any;
   constructor(private http: HttpClient) {
@@ -28,11 +27,11 @@ export class FilmService implements OnInit {
   }
 
   fetchNbFilms(): Observable<any> {
-    return this.http.get(`${this.nbFilmsURL}`);
+    return this.http.get(`${this.backURL + ':8081/stats'}`);
   }
 
   fetchFilms(): Observable<any> {
-    return this.http.get(`${this.backURL + '/film'}`);
+    return this.http.get(`${this.backURL + ':8080/film'}`);
   }
 
   search(param: string): void {
@@ -40,6 +39,6 @@ export class FilmService implements OnInit {
   }
 
   fetchSearch(param: string): Observable<any> {
-    return this.http.get(`${this.backURL + '/approxsearch?name=' + param}`);
+    return this.http.get(`${this.backURL + ':8080/approxsearch?name=' + param}`);
   }
 }

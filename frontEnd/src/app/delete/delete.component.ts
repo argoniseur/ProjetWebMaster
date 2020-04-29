@@ -12,7 +12,7 @@ export class DeleteComponent implements OnInit {
   filmsFound: Film[];
   confirmationDelete = false;
   filmToDelete: Film;
-  backURL = 'http://localhost:8080';
+
   constructor(public filmService: FilmService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -37,7 +37,8 @@ export class DeleteComponent implements OnInit {
     const tmp = this.filmsFound;
     this.filmsFound = [];
     tmp.forEach(f => {if (f !== this.filmToDelete) { this.filmsFound.push(f); }});
-    this.http.get(`${this.backURL + '/deletebyid?id=' + this.filmToDelete.id}`, {responseType: 'text'}).subscribe(r => console.log(r.toString()));
+    this.http.get(`${this.filmService.backURL + ':8080/deletebyid?id=' + this.filmToDelete.id}`, {responseType: 'text'})
+      .subscribe(r => console.log(r.toString()));
 
   }
 }

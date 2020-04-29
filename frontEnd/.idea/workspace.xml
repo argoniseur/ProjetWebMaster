@@ -107,7 +107,7 @@
       <workItem from="1587864201173" duration="23288000" />
       <workItem from="1588035082827" duration="2586000" />
       <workItem from="1588123594268" duration="2934000" />
-      <workItem from="1588159770594" duration="1229000" />
+      <workItem from="1588159770594" duration="2580000" />
     </task>
     <servers />
   </component>
@@ -118,6 +118,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="701" y="357" width="574" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588162746266">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="701" y="357" width="574" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588162746266" />
     <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587920313965">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

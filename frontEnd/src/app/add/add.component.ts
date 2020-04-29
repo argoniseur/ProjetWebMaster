@@ -3,6 +3,7 @@ import {Genre} from '../film/genre.model';
 import {Film} from '../film/film.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {FilmService} from '../service/film.service';
 
 @Component({
   selector: 'app-add',
@@ -12,7 +13,6 @@ import {HttpClient} from '@angular/common/http';
 export class AddComponent implements OnInit {
   enumGenre: string[];
   film: Film = new Film();
-  backURL = 'http://localhost:8080/film';
 
   @ViewChild('titre') nameInput: ElementRef;
   @ViewChild('annee') anneeInput: ElementRef;
@@ -20,7 +20,7 @@ export class AddComponent implements OnInit {
   @ViewChild('genre') genreInput: ElementRef;
   @ViewChild('emplacement') emplacementInput: ElementRef;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public filmService: FilmService) { }
 
   ngOnInit(): void {
     this.enumGenre = [];
@@ -31,7 +31,7 @@ export class AddComponent implements OnInit {
   }
 
   addFilm(film: Film): void {
-    this.http.post<Film>(`${this.backURL}`, film).subscribe(f => {console.log(f); });
+    this.http.post<Film>(`${this.filmService.backURL + ':8080/film'}`, film).subscribe(f => {console.log(f); });
   }
 
   onClick(): void {
