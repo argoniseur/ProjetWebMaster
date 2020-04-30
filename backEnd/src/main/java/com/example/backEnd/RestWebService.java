@@ -38,7 +38,13 @@ public class RestWebService {
     public List<Film> approxsearch(@RequestParam("name") String name){
         List<Film> ret = new ArrayList<>();
         for(Film f : filmRepository.findAll()){
-            if(f.getName().contains(name)){
+            if(f.getName().toUpperCase().contains(name.toUpperCase())){
+                ret.add(f);
+            }else if(f.getRealisateur().toUpperCase().contains(name.toUpperCase())){
+                ret.add(f);
+            }else if(f.getGenre().toUpperCase().contains(name.toUpperCase())){
+                ret.add(f);
+            }else if(f.getAnnee().toUpperCase().contains(name.toUpperCase())){
                 ret.add(f);
             }
         }

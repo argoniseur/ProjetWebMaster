@@ -31,7 +31,7 @@ export class AddComponent implements OnInit {
   }
 
   addFilm(film: Film): void {
-    this.http.post<Film>(`${this.filmService.backURL + ':8080/film'}`, film).subscribe(f => {console.log(f); });
+    this.http.post<Film>(`${this.filmService.backURL + '/film'}`, film).subscribe(f => {console.log(f); });
   }
 
   onClick(): void {

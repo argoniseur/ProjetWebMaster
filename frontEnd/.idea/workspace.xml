@@ -3,6 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="efce1df6-6147-4058-8f26-88233922f374" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/3rdpartylicenses.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/main-es2015.97d0253417088cdd1119.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/main-es5.97d0253417088cdd1119.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/polyfills-es2015.1f913f16a2d346cc8bdc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/polyfills-es5.1a3c78b07cd6f16c6e9a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/runtime-es2015.0811dcefd377500b5b1a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/runtime-es5.0811dcefd377500b5b1a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/frontEnd/styles.0ac29bf0f7cf9e9cd019.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/film/film.model.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/film/genre.model.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/service/film.service.ts" afterDir="false" />
@@ -107,7 +117,7 @@
       <workItem from="1587864201173" duration="23288000" />
       <workItem from="1588035082827" duration="2586000" />
       <workItem from="1588123594268" duration="2934000" />
-      <workItem from="1588159770594" duration="2580000" />
+      <workItem from="1588159770594" duration="7517000" />
     </task>
     <servers />
   </component>

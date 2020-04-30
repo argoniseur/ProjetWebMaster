@@ -1,0 +1,154 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: website-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/share/testdb"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: website-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - name: front-container
+        image: shynth/front:latest
+        imagePullPolicy: Always
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+        - name: backend
+          image: shynth/backend:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          volumeMounts:
+          - mountPath: /root/data
+            name: node-pv-storage
+        - name: compute
+          image: shynth/compute:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8081
+      volumes:
+      - name: node-pv-storage
+        persistentVolumeClaim:
+          claimName: website-pv-claim
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-service
+spec:
+  ports:
+    - name: http
+      targetPort: 80
+      port: 80
+  selector:
+    app: front
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-service
+spec:
+  ports:
+    - name: backend
+      targetPort: 8080
+      port: 8080
+    - name: compute
+      targetPort: 8081
+      port: 8081
+  type: ClusterIP
+  selector:
+    app: back
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: front-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+    - host: front.localhost
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: front-service
+              servicePort: http
+          - path: /random
+            backend:
+              serviceName: front-service
+              servicePort: http
+          - path: /delete
+            backend:
+              serviceName: front-service
+              servicePort: http
+          - path: /add
+            backend:
+              serviceName: front-service
+              servicePort: http
+    - host: backend.local
+      http:
+        paths:
+          - backend:
+              serviceName: back-service
+              servicePort: backend
+
+    - host: compute.local
+      http:
+        paths:
+        - backend:
+            serviceName: back-service
+            servicePort: compute

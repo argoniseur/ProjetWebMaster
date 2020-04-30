@@ -17,12 +17,12 @@ export class RandomComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient, private router: Router, public filmService: FilmService) { }
 
   ngOnInit(): void {
-    this.http.get<any>(`${this.filmService.backURL + ':8080/random'}`).subscribe(film => this.film = film);
+    this.http.get<any>(`${this.filmService.backURL + '/random'}`).subscribe(film => this.film = film);
     this.router.events.pipe(
       filter((event: RouterEvent) => event instanceof NavigationEnd),
       takeUntil(this.destroyed)
     ).subscribe(() => {
-      this.http.get<any>(`${this.filmService.backURL + ':8080/random'}`).subscribe(film => this.film = film);
+      this.http.get<any>(`${this.filmService.backURL + '/random'}`).subscribe(film => this.film = film);
     });
   }
 
